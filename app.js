@@ -118,7 +118,7 @@ if($("ssave")) {
 function resetS(){editS=null;$("sa").value="";$("ss").value="";$("sdt").value=today();$("sh").textContent="Add savings / income";$("ssave").textContent="Add savings";if($("scancel"))$("scancel").style.display="none"}
 if($("scancel")) $("scancel").onclick=resetS;
 
-window.editInc=id=>{const e=S.income.files?S.income.find(x=>x.id===id):S.income.find(x=>x.id===id);editS=id;$("sa").value=e.amount;$("ss").value=e.source;$("sdt").value=e.date;$("sh").textContent="Edit savings";$("ssave").textContent="Update savings";if($("scancel"))$("scancel").style.display="";window.scrollTo(0,0)};
+window.editInc=id=>{const e=S.income.find(x=>x.id===id);editS=id;$("sa").value=e.amount;$("ss").value=e.source;$("sdt").value=e.date;$("sh").textContent="Edit savings";$("ssave").textContent="Update savings";if($("scancel"))$("scancel").style.display="";window.scrollTo(0,0)};
 window.delInc=id=>{if(confirm("Delete this savings entry?")){S.income=S.income.filter(x=>x.id!==id);save();render()}};
 if($("lsave")) $("lsave").onclick=()=>{S.limit=parseFloat($("lim").value)||0;save();render()};
 
