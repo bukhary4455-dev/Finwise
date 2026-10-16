@@ -225,3 +225,26 @@ document.querySelectorAll(".qa button").forEach(b => {
 });
 
 render();
+    if (!sample) throw 0;
+      const r = await sample(prompt, { cache: false, onText: ({ text }) => { out.textContent = text; } });
+      out.textContent = r.text;
+    } catch (e) {
+      out.textContent = localTips();
+    }
+    btn.disabled = false;
+  };
+}
+
+document.querySelectorAll(".qa button").forEach(b => {
+  b.addEventListener("pointermove", e => {
+    const r = b.getBoundingClientRect();
+    b.style.setProperty("--ry", ((e.clientX - r.left) / r.width - .5) * 26 + "deg");
+    b.style.setProperty("--rx", (-((e.clientY - r.top) / r.height - .5)) * 26 + "deg");
+  });
+  ["pointerleave", "pointerup", "pointercancel"].forEach(ev => b.addEventListener(ev, () => {
+    b.style.setProperty("--rx", "0deg");
+    b.style.setProperty("--ry", "0deg");
+  }));
+});
+
+render();
