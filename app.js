@@ -92,7 +92,7 @@ function render(){
 }
 
 if($("esave")) {
-  $("esave"].onclick=()=>{
+  $("esave").onclick=()=>{
     const amount=parseFloat($("ea").value);if(!(amount>0))return alert("Enter a valid amount");
     const o={id:editE||uid(),amount,cat:$("ec").value,desc:$("ed").value.trim(),date:$("edt").value||today()};
     if(editE)S.expenses=S.expenses.map(x=>x.id===editE?o:x);else S.expenses.push(o);
@@ -100,10 +100,10 @@ if($("esave")) {
   };
 }
 
-function resetE(){editE=null;$("ea").value="";$("ed").value="";$("edt").value=today();$("eh").textContent="Add expense";$("esave").textContent="Add expense";$("ecancel").style.display="none"}
+function resetE(){editE=null;$("ea").value="";$("ed").value="";$("edt").value=today();$("eh").textContent="Add expense";$("esave").textContent="Add expense";if($("ecancel"))$("ecancel").style.display="none"}
 if($("ecancel")) $("ecancel").onclick=resetE;
 
-window.editExp=id=>{const e=S.expenses.find(x=>x.id===id);editE=id;$("ea").value=e.amount;$("ec").value=e.cat;$("ed").value=e.desc;$("edt").value=e.date;$("eh").textContent="Edit expense";$("esave").textContent="Update expense";$("ecancel").style.display="";window.scrollTo(0,0)};
+window.editExp=id=>{const e=S.expenses.find(x=>x.id===id);editE=id;$("ea").value=e.amount;$("ec").value=e.cat;$("ed").value=e.desc;$("edt").value=e.date;$("eh").textContent="Edit expense";$("esave").textContent="Update expense";if($("ecancel"))$("ecancel").style.display="";window.scrollTo(0,0)};
 window.delExp=id=>{if(confirm("Delete this expense? The amount returns to your savings.")){S.expenses=S.expenses.filter(x=>x.id!==id);save();render()}};
 
 if($("ssave")) {
@@ -115,10 +115,10 @@ if($("ssave")) {
   };
 }
 
-function resetS(){editS=null;$("sa").value="";$("ss").value="";$("sdt").value=today();$("sh").textContent="Add savings / income";$("ssave").textContent="Add savings";$("scancel").style.display="none"}
+function resetS(){editS=null;$("sa").value="";$("ss").value="";$("sdt").value=today();$("sh").textContent="Add savings / income";$("ssave").textContent="Add savings";if($("scancel"))$("scancel").style.display="none"}
 if($("scancel")) $("scancel").onclick=resetS;
 
-window.editInc=id=>{const e=S.income.find(x=>x.id===id);editS=id;$("sa").value=e.amount;$("ss").value=e.source;$("sdt").value=e.date;$("sh").textContent="Edit savings";$("ssave").textContent="Update savings";$("scancel").style.display="";window.scrollTo(0,0)};
+window.editInc=id=>{const e=S.income.files?S.income.find(x=>x.id===id):S.income.find(x=>x.id===id);editS=id;$("sa").value=e.amount;$("ss").value=e.source;$("sdt").value=e.date;$("sh").textContent="Edit savings";$("ssave").textContent="Update savings";if($("scancel"))$("scancel").style.display="";window.scrollTo(0,0)};
 window.delInc=id=>{if(confirm("Delete this savings entry?")){S.income=S.income.filter(x=>x.id!==id);save();render()}};
 if($("lsave")) $("lsave").onclick=()=>{S.limit=parseFloat($("lim").value)||0;save();render()};
 
@@ -156,4 +156,3 @@ document.querySelectorAll(".qa button").forEach(b=>{
 });
 
 render();
-if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
