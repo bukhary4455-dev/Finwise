@@ -25,5 +25,22 @@
 <section id="v-exp" hidden><h2>EXPENSES</h2><div class="card"><b id="eh">Add expense</b>
 <div class="row" style="margin-top:8px"><input id="ea" type="number" inputmode="decimal" min="0" placeholder="Amount"><select id="ec"></select></div>
 <div class="row" style="margin-top:8px"><input id="ed" placeholder="Where &amp; why? (e.g. Pizza with friends)"><input id="edt" type="date"></div>
-<div class="row" style="margin-top:8px"><button id="esave">Add expense</button><button class="ghost" id="ecancel" style="display:
-                                                                                 
+<div class="row" style="margin-top:8px"><button id="esave">Add expense</button><button class="ghost" id="ecancel" style="display:none">Cancel edit</button></div></div>
+<div class="card" id="elist"></div></section>
+
+<section id="v-sav" hidden><h2>SAVINGS &amp; INCOME</h2><div class="card"><b id="sh">Add savings / income</b>
+<div class="row" style="margin-top:8px"><input id="sa" type="number" inputmode="decimal" min="0" placeholder="Amount"><input id="ss" placeholder="Source (Salary, Gift…)"></div>
+<div class="row" style="margin-top:8px"><input id="sdt" type="date"></div>
+<div class="row" style="margin-top:8px"><button id="ssave">Add savings</button><button class="ghost" id="scancel" style="display:none">Cancel edit</button></div></div>
+<div class="card" id="slist"></div></section>
+
+<section id="v-bud" hidden><h2>MONTHLY SPENDING LIMIT</h2><div class="card">
+<div class="row"><input id="lim" type="number" inputmode="decimal" min="0" placeholder="e.g. 20000"><button id="lsave">Save limit</button></div>
+<div class="bar"><i id="lbar" style="width:0"></i></div><div class="mu" id="ltxt" style="margin-top:6px"></div></div>
+<h2>AI SPENDING COACH</h2><div class="card"><div class="mu">Analyses your expenses and tells you where to cut back.</div>
+<button id="aibtn" style="margin-top:10px">Get AI suggestions</button><div id="ai"></div></div></section>
+</main>
+<nav id="nav"><button data-v="home" class="on"><span>🏠</span>Home</button><button data-v="sav"><span>🐷</span>Savings</button><button data-v="exp"><span>💸</span>Expenses</button><button data-v="bud"><span>🎯</span>Budget</button></nav>
+<script src="app.js"></script>
+</body></html>
+                   
