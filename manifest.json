@@ -1,1 +1,22 @@
-{"name":"FinWise – Expense Tracker","short_name":"FinWise","start_url":"./index.html","scope":"./","display":"standalone","background_color":"#eaf6f6","theme_color":"#1fb5a8","icons":[{"src":"assets/icon-192.png","sizes":"192x192","type":"image/png"},{"src":"assets/icon-512.png","sizes":"512x512","type":"image/png"}]}
+{
+  "name": "FinWise Expense Tracker",
+  "short_name": "FinWise",
+  "description": "Track savings and daily expenses.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eaf6f6",
+  "theme_color": "#1fb5a8",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
