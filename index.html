@@ -1,46 +1,178 @@
+
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>FinWise – Expense Tracker</title>
-<meta name="description" content="Track savings, daily expenses and get smart spending tips.">
-<meta name="theme-color" content="#1fb5a8">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" href="icon-192.png">
-<link rel="apple-touch-icon" href="icon-192.png">
-<link rel="stylesheet" href="style.css">
-</head><body>
-<header><i class="coin c1"></i><i class="coin c2"></i><i class="coin c3"></i><div class="hw"><img src="logo.png" alt=""><div><b>FINWISE</b><span>Your financial command center</span></div></div></header>
-<main>
-<div class="hero"><i class="glow"></i><div class="l">TOTAL BALANCE</div><div class="bal" id="bal">0</div>
-<div class="s"><div><i class="dot" style="background:#5ee0c7"></i>Income <b id="inc">0</b></div><div><i class="dot" style="background:#ff7a66"></i>Expense <b id="exp">0</b></div></div>
-<svg class="sp" id="sp" viewBox="0 0 300 64" preserveAspectRatio="none"></svg></div>
-<div id="alerts"></div>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<section id="v-home">
-<h2>QUICK ACTIONS</h2>
-<div class="qa"><button onclick="go('sav')"><img src="savings.png" alt="">Savings</button><button onclick="go('bud')"><img src="money.png" alt="">Budget &amp; AI</button><button onclick="go('exp')"><img src="expenses.png" alt="">Expenses</button></div>
-<h2>TRANSACTION HISTORY</h2><div class="card" id="hist"></div>
-</section>
+  <title>FinWise – Expense Tracker</title>
+  <meta name="description" content="Track savings, daily expenses and get smart spending tips.">
+  <meta name="theme-color" content="#1fb5a8">
 
-<section id="v-exp" hidden><h2>EXPENSES</h2><div class="card"><b id="eh">Add expense</b>
-<div class="row" style="margin-top:8px"><input id="ea" type="number" inputmode="decimal" min="0" placeholder="Amount"><select id="ec"></select></div>
-<div class="row" style="margin-top:8px"><input id="ed" placeholder="Where &amp; why? (e.g. Pizza with friends)"><input id="edt" type="date"></div>
-<div class="row" style="margin-top:8px"><button id="esave">Add expense</button><button class="ghost" id="ecancel" style="display:none">Cancel edit</button></div></div>
-<div class="card" id="elist"></div></section>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icon-192.png">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="stylesheet" href="./style.css">
 
-<section id="v-sav" hidden><h2>SAVINGS &amp; INCOME</h2><div class="card"><b id="sh">Add savings / income</b>
-<div class="row" style="margin-top:8px"><input id="sa" type="number" inputmode="decimal" min="0" placeholder="Amount"><input id="ss" placeholder="Source (Salary, Gift…)"></div>
-<div class="row" style="margin-top:8px"><input id="sdt" type="date"></div>
-<div class="row" style="margin-top:8px"><button id="ssave">Add savings</button><button class="ghost" id="scancel" style="display:none">Cancel edit</button></div></div>
-<div class="card" id="slist"></div></section>
+</head>
+<body>
 
-<section id="v-bud" hidden><h2>MONTHLY SPENDING LIMIT</h2><div class="card">
-<div class="row"><input id="lim" type="number" inputmode="decimal" min="0" placeholder="e.g. 20000"><button id="lsave">Save limit</button></div>
-<div class="bar"><i id="lbar" style="width:0"></i></div><div class="mu" id="ltxt" style="margin-top:6px"></div></div>
-<h2>AI SPENDING COACH</h2><div class="card"><div class="mu">Analyses your expenses and tells you where to cut back.</div>
-<button id="aibtn" style="margin-top:10px">Get AI suggestions</button><div id="ai"></div></div></section>
-</main>
-<nav id="nav"><button data-v="home" class="on"><span>🏠</span>Home</button><button data-v="sav"><span>🐷</span>Savings</button><button data-v="exp"><span>💸</span>Expenses</button><button data-v="bud"><span>🎯</span>Budget</button></nav>
-<script src="app.js?v=20261017"></script>
-</body></html>
-  
+  <header>
+    <i class="coin c1"></i>
+    <i class="coin c2"></i>
+    <i class="coin c3"></i>
+
+    <div class="hw">
+      <img src="./logo.png" alt="">
+      <div>
+        <b>FINWISE</b>
+        <span>Your financial command center</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="hero">
+      <i class="glow"></i>
+      <div class="l">TOTAL BALANCE</div>
+      <div class="bal" id="bal">0</div>
+
+      <div class="s">
+        <div>
+          <i class="dot" style="background:#5ee0c7"></i>
+          Income <b id="inc">0</b>
+        </div>
+        <div>
+          <i class="dot" style="background:#ff7a66"></i>
+          Expense <b id="exp">0</b>
+        </div>
+      </div>
+
+      <svg class="sp" id="sp" viewBox="0 0 300 64" preserveAspectRatio="none"></svg>
+    </div>
+
+    <div id="alerts"></div>
+
+    <section id="v-home">
+      <h2>QUICK ACTIONS</h2>
+
+      <div class="qa">
+        <button onclick="go('sav')">
+          <img src="./savings.png" alt="">Savings
+        </button>
+        <button onclick="go('bud')">
+          <img src="./money.png" alt="">Budget &amp; AI
+        </button>
+        <button onclick="go('exp')">
+          <img src="./expenses.png" alt="">Expenses
+        </button>
+      </div>
+
+      <h2>TRANSACTION HISTORY</h2>
+      <div class="card" id="hist"></div>
+    </section>
+
+    <section id="v-exp" hidden>
+      <h2>EXPENSES</h2>
+
+      <div class="card">
+        <b id="eh">Add expense</b>
+
+        <div class="row" style="margin-top:8px">
+          <input id="ea" type="number" inputmode="decimal" min="0" placeholder="Amount">
+          <select id="ec"></select>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+          <input id="ed" placeholder="Where &amp; why? (e.g. Pizza with friends)">
+          <input id="edt" type="date">
+        </div>
+
+        <div class="row" style="margin-top:8px">
+          <button id="esave">Add expense</button>
+          <button class="ghost" id="ecancel" style="display:none">Cancel edit</button>
+        </div>
+      </div>
+
+      <div class="card" id="elist"></div>
+    </section>
+
+    <section id="v-sav" hidden>
+      <h2>SAVINGS &amp; INCOME</h2>
+
+      <div class="card">
+        <b id="sh">Add savings / income</b>
+
+        <div class="row" style="margin-top:8px">
+          <input id="sa" type="number" inputmode="decimal" min="0" placeholder="Amount">
+          <input id="ss" placeholder="Source (Salary, Gift…)">
+        </div>
+
+        <div class="row" style="margin-top:8px">
+          <input id="sdt" type="date">
+        </div>
+
+        <div class="row" style="margin-top:8px">
+          <button id="ssave">Add savings</button>
+          <button class="ghost" id="scancel" style="display:none">Cancel edit</button>
+        </div>
+      </div>
+
+      <div class="card" id="slist"></div>
+    </section>
+
+    <section id="v-bud" hidden>
+      <h2>MONTHLY SPENDING LIMIT</h2>
+
+      <div class="card">
+        <div class="row">
+          <input id="lim" type="number" inputmode="decimal" min="0" placeholder="e.g. 20000">
+          <button id="lsave">Save limit</button>
+        </div>
+
+        <div class="bar">
+          <i id="lbar" style="width:0"></i>
+        </div>
+
+        <div class="mu" id="ltxt" style="margin-top:6px"></div>
+      </div>
+
+      <h2>AI SPENDING COACH</h2>
+
+      <div class="card">
+        <div class="mu">
+          Analyses your expenses and tells you where to cut back.
+        </div>
+
+        <button id="aibtn" style="margin-top:10px">Get AI suggestions</button>
+        <div id="ai"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <nav id="nav">
+    <button data-v="home" class="on"><span>🏠</span>Home</button>
+    <button data-v="sav"><span>🐷</span>Savings</button>
+    <button data-v="exp"><span>💸</span>Expenses</button>
+    <button data-v="bud"><span>🎯</span>Budget</button>
+  </nav>
+
+  <!-- Main application JavaScript -->
+  <script src="./app.js?v=20261017"></script>
+
+  <!-- Register service worker for PWA support -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+          .catch(error => {
+            console.error("Service worker error:", error);
+          });
+      });
+    }
+  </script>
+
+</body>
+</html>
