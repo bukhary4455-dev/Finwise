@@ -156,4 +156,3 @@ document.querySelectorAll(".qa button").forEach(b=>{
 });
 
 render();
-    
