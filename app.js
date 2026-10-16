@@ -1,3 +1,4 @@
+alert("JS is working!");
 const CATS = ["Food", "Transport", "Bills", "Shopping", "Health", "Entertainment", "Education", "Rent", "Other"];
 const EM = { Food: "🍔", Transport: "🚌", Bills: "🧾", Shopping: "🛍️", Health: "💊", Entertainment: "🎬", Education: "📚", Rent: "🏠", Other: "📦" };
 const KEY = "exp_tracker_v1";
