@@ -1,14 +1,38 @@
-self.addEventListener("install", () => {
+const C = "finwise-v3";
+const F = [
+  "./",
+  "index.html",
+  "style.css",
+  "app.js",
+  "manifest.json",
+  "logo.png",
+  "savings.png",
+  "money.png",
+  "expenses.png",
+  "icon-192.png",
+  "icon-512.png"
+];
+
+self.addEventListener("install", e => {
+  e.waitUntil(caches.open(C).then(c => c.addAll(F)));
   self.skipWaiting();
 });
 
-self.addEventListener("activate", event => {
-  event.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(keys.map(key => caches.delete(key)));
-    }).then(() => {
-      return self.clients.claim();
-    })
+self.addEventListener("activate", e => {
+  e.waitUntil(
+    caches.keys().then(k => Promise.all(k.filter(x => x !== C).map(x => caches.delete(x))))
   );
+  self.client && self.clients.claim();
 });
 
+self.addEventListener("fetch", e => {
+  e.respondWith(
+    fetch(e.request)
+      .then(r => {
+        const cp = r.clone();
+        caches.open(C).then(c => c.put(e.request, cp));
+        return r;
+      })
+      .catch(() => caches.match(e.request))
+  );
+});
