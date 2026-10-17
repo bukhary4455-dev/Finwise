@@ -1,7 +1,5 @@
-‎
-‎"use strict";
-‎
-‎(() => {
+‎‎"use strict";
+‎‎(() => {
 ‎  const CATS = [
 ‎    "Food", "Transport", "Bills", "Shopping", "Health",
 ‎    "Entertainment", "Education", "Rent", "Other"
@@ -18,17 +16,14 @@
 ‎    Rent: "🏠",
 ‎    Other: "📦"
 ‎  };
-‎
-‎  const KEY = "exp_tracker_v1";
-‎
-‎  let S = { income: [], expenses: [], limit: 0 };
+  
+‎ const KEY = "exp_tracker_v1";
+‎ let S = { income: [], expenses: [], limit: 0 };
 ‎  let editE = null;
 ‎  let editS = null;
 ‎  const animationValues = {};
-‎
-‎  const $ = id => document.getElementById(id);
-‎
-‎  // Local date (avoids UTC date errors)
+‎‎  const $ = id => document.getElementById(id);
+‎ // Local date (avoids UTC date errors)
 ‎  function today() {
 ‎    const d = new Date();
 ‎    const y = d.getFullYear();
@@ -691,5 +686,4 @@
 ‎  } else {
 ‎    init();
 ‎  }
-‎})();   
-‎
+‎})();
